@@ -27,7 +27,7 @@ fn handle_client(stream: TcpStream) {
     thread::spawn(move || {
         let public_addr = stream.peer_addr().unwrap();
         let host = HostInit::new(public_addr);
-        let payload = json_serde::to_string(&host).unwrap();
+        let payload = serde_json::to_string(&host).unwrap();
         println!("payload: {}", payload);
         loop {
             stream.write(&payload.as_bytes());
