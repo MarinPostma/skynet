@@ -53,6 +53,8 @@ fn handle_client(mut stream: TcpStream) {
                 },
             );
         }
+        println!("{}", payload);
+        stream.write(&payload.as_bytes());
         stream.write(&payload.as_bytes());
         loop {}
     });
