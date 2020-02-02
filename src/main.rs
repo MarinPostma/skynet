@@ -23,7 +23,7 @@ impl HostInit {
     }
 }
 
-fn handle_client(stream: TcpStream) {
+fn handle_client(mut stream: TcpStream) {
     thread::spawn(move || {
         let public_addr = stream.peer_addr().unwrap();
         let host = HostInit::new(public_addr);
